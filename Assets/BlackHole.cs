@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class BlackHole : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.tag == "Player") 
         {
-            collision.transform.localScale += Vector3.one * -1f;
+            collision.transform.localScale += Vector3.one * -0.01f;
         }
     }
     // Start is called before the first frame update
