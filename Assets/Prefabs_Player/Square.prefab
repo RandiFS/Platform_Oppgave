@@ -206,6 +206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioClip: {fileID: 8300000, guid: d4db8eb958bac31438824b8b8317cbb0, type: 3}
   AudioSource: {fileID: 4642036415481218649}
+  CurrentState: 0
   rb: {fileID: 2930399236538234670}
   groundCheck: {fileID: 3780053940623181060}
   groundLayer:

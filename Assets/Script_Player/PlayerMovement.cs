@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip AudioClip;
     public AudioSource AudioSource;
 
+    public State CurrentState;
+
     private float horizontal;
     private float speed = 8f;
     private float jumpingPower = 16f;
@@ -34,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Flip();
+
+        TrackMovementState();
     }
 
     private void FixedUpdate()
@@ -57,4 +61,30 @@ public class PlayerMovement : MonoBehaviour
         } 
     }
 
+    private void TrackMovementState()
+    {
+        if ((rb.velocity.x == 0) && IsGrounded())
+        {
+            CurrentState = State.Idle;
+            Debug.Log("Idle");
+        }
+
+        if ((rb.velocity.x != 0) && IsGrounded())
+        {
+            CurrentState = State.Walking;
+            Debug.Log("Walking");
+        }
+
+        if (rb.velocity.y > 0)
+        {
+            CurrentState = State.Jumping;
+            Debug.Log("Jumping");
+        }
+
+        if (rb.velocity.y < 0)
+        {
+            CurrentState = State.Falling;
+            Debug.Log("Falling");
+        }
+    }
 }
